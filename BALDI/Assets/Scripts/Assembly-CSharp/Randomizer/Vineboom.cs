@@ -25,6 +25,6 @@ public class Vineboom : MonoBehaviour
         canExit = true;
         transform.DOKill(false);
         transform.localScale = new Vector3(10f, 10f, 1f);
-        transform.DOScale(new Vector3(1f, 1f, 1f), vineboom.length).SetEase(Ease.OutExpo);
+        transform.DOScale(new Vector3(1f, 1f, 1f), vineboom.length / 2f).SetEase(Ease.OutExpo);
     }
 }
