@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Assembly-CSharp\StartButton.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\JumpRopeScript.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\MouseoverScript.cs" />
+    <Compile Include="Assets\Scripts\Assembly-CSharp\Randomizer\Vineboom.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\ScoreScript.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\SecretScript.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\DarkDoorScript.cs" />
