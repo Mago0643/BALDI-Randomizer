@@ -7,6 +7,12 @@ public class Vineboom : MonoBehaviour
     public AudioClip vineboom;
     
     bool canExit = false;
+
+    private void Start()
+    {
+        Time.timeScale = 1f;
+    }
+
     private void Update()
     {
         if (!aud.isPlaying & canExit)
