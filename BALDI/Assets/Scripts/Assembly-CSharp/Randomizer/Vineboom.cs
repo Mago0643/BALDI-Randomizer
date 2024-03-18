@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class Vineboom : MonoBehaviour
@@ -22,5 +23,7 @@ public class Vineboom : MonoBehaviour
         aud.clip = vineboom;
         aud.Play();
         canExit = true;
+        transform.DOKill(false);
+        transform.DOScale(new Vector3(10f, 10f, 1f), vineboom.length).SetEase(Ease.OutExpo);
     }
 }
