@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-// the everything about school objects goes here
 public class School : MonoBehaviour
 {
     RndTexture rTex;
@@ -18,6 +16,7 @@ public class School : MonoBehaviour
         // randomize all textures
         foreach (MeshRenderer mesh in school)
         {
+            mesh.material.shader = Shader.Find("Legacy Shaders/Transparent/Cutout/Diffuse");
             mesh.material.mainTexture = rTex.GetRandomTexture();
         }
         foreach (SpriteRenderer sprite in sprites)
@@ -29,5 +28,6 @@ public class School : MonoBehaviour
                 sprite.sprite = Sprite.Create(tex as Texture2D, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
             }
         }
+        
     }
 }

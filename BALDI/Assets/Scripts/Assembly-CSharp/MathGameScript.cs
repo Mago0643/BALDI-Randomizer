@@ -1,6 +1,4 @@
 ﻿using DG.Tweening;
-using DG.Tweening.Plugins.Core;
-using DG.Tweening.Plugins.Options;
 using System;
 using System.Collections;
 using TMPro;
@@ -14,6 +12,7 @@ public class MathGameScript : MonoBehaviour
     Vector3 ogPos;
     float moveScale = 5f;
     float scaleOffset = 1.5f;
+    bool randomBaldi = true;
     // Token: 0x06000982 RID: 2434 RVA: 0x000231E0 File Offset: 0x000215E0
     private void Start()
     {
@@ -34,26 +33,30 @@ public class MathGameScript : MonoBehaviour
         gc.learnMusic.EnableChannels(new int[] { 1, 3, 10 });
         gc.learnMusic.Tempo = UnityEngine.Random.Range(0.5f, 4f);
         ogPos = baldiFeedTransform.position;
+        randomBaldi = UnityEngine.Random.Range(0, 4) >= 2;
     }
 
     // Token: 0x06000983 RID: 2435 RVA: 0x00023270 File Offset: 0x00021670
     private void Update()
     {
-        if (scaleOffset != 0f)
+        if (randomBaldi)
         {
-            baldiFeedTransform.localScale = new Vector3(
-                UnityEngine.Random.Range(-scaleOffset, scaleOffset),
-                UnityEngine.Random.Range(-scaleOffset, scaleOffset),
-                1f
-            );
-        }
-        if (moveScale != 0f)
-        {
-            baldiFeedTransform.position = ogPos + new Vector3(
-                UnityEngine.Random.Range(-moveScale, moveScale),
-                UnityEngine.Random.Range(-moveScale, moveScale),
-                UnityEngine.Random.Range(-moveScale, moveScale)
-            );
+            if (scaleOffset != 0f)
+            {
+                baldiFeedTransform.localScale = new Vector3(
+                    UnityEngine.Random.Range(-scaleOffset, scaleOffset),
+                    UnityEngine.Random.Range(-scaleOffset, scaleOffset),
+                    1f
+                );
+            }
+            if (moveScale != 0f)
+            {
+                baldiFeedTransform.position = ogPos + new Vector3(
+                    UnityEngine.Random.Range(-moveScale, moveScale),
+                    UnityEngine.Random.Range(-moveScale, moveScale),
+                    UnityEngine.Random.Range(-moveScale, moveScale)
+                );
+            }
         }
         if (!this.baldiAudio.isPlaying)
         {
@@ -345,9 +348,8 @@ public class MathGameScript : MonoBehaviour
                 {
                     this.baldiFeed.SetTrigger("angry");
                     baldiFeed.SetFloat("frownSpeed", UnityEngine.Random.Range(0.5f, 4f));
-                    // idk why this is not working
-                    var a = DOTween.To(() => scaleOffset, val => scaleOffset = val, 5f, 1f).SetEase(Ease.OutExpo);
-                    var b = DOTween.To(() => moveScale, val => moveScale = val, 10f, 1f).SetEase(Ease.OutExpo);
+                    var a = DOTween.To(() => scaleOffset, val => scaleOffset = val, 5f, 1f).SetEase(Ease.InQuad).SetUpdate(true);
+                    var b = DOTween.To(() => moveScale, val => moveScale = val, 10f, 1f).SetEase(Ease.InQuad).SetUpdate(true);
                     a.Play();
                     b.Play();
                     this.gc.ActivateSpoopMode();

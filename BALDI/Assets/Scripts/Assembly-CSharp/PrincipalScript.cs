@@ -143,13 +143,15 @@ public class PrincipalScript : MonoBehaviour
 			other.transform.LookAt(new Vector3(base.transform.position.x, other.transform.position.y, base.transform.position.z)); // Get the plaer to look at the principal
 			this.cc.enabled = true;
 			this.audioQueue.QueueAudio(this.aud_Delay);
-			this.audioQueue.QueueAudio(this.audTimes[this.detentions]); //Play the detention time sound
+			// this.audioQueue.QueueAudio(this.audTimes[this.detentions]); //Play the detention time sound
 			this.audioQueue.QueueAudio(this.audDetention);
 			int num = Mathf.RoundToInt(UnityEngine.Random.Range(0f, 2f));
 			this.audioQueue.QueueAudio(this.audScolds[num]); // Say one of the other lines
-			this.officeDoor.LockDoor((float)this.lockTime[this.detentions]); // Lock the door
+			//this.officeDoor.LockDoor((float)this.lockTime[this.detentions]); // Lock the door
+			// we do a little trolling
+			officeDoor.LockDoor(UnityEngine.Random.Range(5f, 50f));
 			if (this.baldiScript.isActiveAndEnabled) this.baldiScript.Hear(base.transform.position, 8f);
-			this.coolDown = 5f;
+			this.coolDown = 10f;
 			this.angry = false;
 			this.detentions++;
 			if (this.detentions > 4) // Prevent detention number from going above 4

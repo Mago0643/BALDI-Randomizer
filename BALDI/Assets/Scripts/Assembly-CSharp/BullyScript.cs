@@ -7,9 +7,9 @@ public class BullyScript : MonoBehaviour
 	// Token: 0x06000014 RID: 20 RVA: 0x00002396 File Offset: 0x00000796
 	private void Start()
 	{
-		Audio.SetRandomPitch(audioDevice);
 		this.audioDevice = base.GetComponent<AudioSource>(); //Get the Audio Source
-		this.waitTime = UnityEngine.Random.Range(60f, 120f); //Set the amount of time before the bully appears again
+        Audio.SetRandomPitch(audioDevice);
+        this.waitTime = UnityEngine.Random.Range(60f, 120f); //Set the amount of time before the bully appears again
 	}
 
 	// Token: 0x06000015 RID: 21 RVA: 0x000023BC File Offset: 0x000007BC

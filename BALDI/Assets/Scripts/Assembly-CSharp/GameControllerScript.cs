@@ -1,4 +1,5 @@
-﻿using FluidMidi;
+﻿using DG.Tweening;
+using FluidMidi;
 using System;
 using System.Collections;
 using TMPro;
@@ -140,12 +141,6 @@ public class GameControllerScript : MonoBehaviour
 				Time.timeScale = 1f;
 				SceneManager.LoadScene("GameOver");
 			}
-		}
-		if (this.finaleMode && !this.audioDevice.isPlaying && this.exitsReached == 3)
-		{
-			this.audioDevice.clip = this.aud_MachineLoop;
-			this.audioDevice.loop = true;
-			this.audioDevice.Play();
 		}
 	}
 
@@ -554,7 +549,8 @@ public class GameControllerScript : MonoBehaviour
         this.audioDevice.PlayOneShot(this.aud_Switch, 0.8f);
         if (this.exitsReached == 1)
 		{
-			RenderSettings.ambientLight = Color.red;
+			RenderSettings.ambientLight = Color.white;
+			DOTween.To(() => RenderSettings.ambientLight, col => RenderSettings.ambientLight = col, Color.red, 2f).SetEase(Ease.InQuad).Play();
 			this.audioDevice.clip = this.aud_MachineQuiet;
 			this.audioDevice.loop = true;
             Audio.SetRandomPitch(audioDevice);
@@ -564,17 +560,17 @@ public class GameControllerScript : MonoBehaviour
 		if (this.exitsReached == 2) //Play a sound
 		{
 			this.audioDevice.volume = 0.8f;
-			this.audioDevice.clip = this.aud_MachineStart;
+			//this.audioDevice.clip = this.aud_MachineStart;
 			this.audioDevice.loop = true;
             Audio.SetRandomPitch(audioDevice);
-            this.audioDevice.Play();
+            //this.audioDevice.Play();
 		}
 		if (this.exitsReached == 3) //Play a even louder sound
 		{
-			this.audioDevice.clip = this.aud_MachineRev;
+			//this.audioDevice.clip = this.aud_MachineRev;
             Audio.SetRandomPitch(audioDevice);
             this.audioDevice.loop = false;
-			this.audioDevice.Play();
+			//this.audioDevice.Play();
 		}
 	}
 
@@ -606,7 +602,7 @@ public class GameControllerScript : MonoBehaviour
 	public Transform cameraTransform;
 
 	// Token: 0x040005FB RID: 1531
-	public Camera camera;
+	public new Camera camera;
 
 	// Token: 0x040005FC RID: 1532
 	private int cullingMask;

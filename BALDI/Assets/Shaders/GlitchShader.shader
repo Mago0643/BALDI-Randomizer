@@ -65,14 +65,13 @@ Shader "Unlit/GlitchShader"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                // sample the texture
                 fixed4 col;
                 col.r = texStuff(i.uv, 0, -_Amp);
                 col.g = texStuff(i.uv, 1, 0.0);
                 col.b = texStuff(i.uv, 2, _Amp);
                 col.a = texStuff(i.uv, 3, 0.0);
 
-                // clip the alpha
+                UNITY_APPLY_FOG(i.fogCoord, col);
                 clip(col.a - 0.5);
                 return col;
             }
