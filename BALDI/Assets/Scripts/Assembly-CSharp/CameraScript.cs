@@ -4,6 +4,7 @@ using UnityEngine;
 // Token: 0x020000B5 RID: 181
 public class CameraScript : MonoBehaviour
 {
+	Vector3 shaking;
 	// Token: 0x0600092D RID: 2349 RVA: 0x00020CC4 File Offset: 0x0001F0C4
 	private void Start()
 	{
@@ -13,6 +14,11 @@ public class CameraScript : MonoBehaviour
 	// Token: 0x0600092E RID: 2350 RVA: 0x00020D00 File Offset: 0x0001F100
 	private void Update()
 	{
+		if (shakeAmp != 0f)
+		{
+			shaking = new Vector3(UnityEngine.Random.Range(-shakeAmp, shakeAmp), UnityEngine.Random.Range(-shakeAmp, shakeAmp), UnityEngine.Random.Range(-shakeAmp, shakeAmp));
+		}
+
 		if (this.ps.jumpRope) //If the player is jump roping
 		{
 			this.velocity -= this.gravity * Time.deltaTime; //Decrease the velocity using gravity
@@ -40,23 +46,25 @@ public class CameraScript : MonoBehaviour
 	// Token: 0x0600092F RID: 2351 RVA: 0x00020DD8 File Offset: 0x0001F1D8
 	private void LateUpdate()
 	{
-		base.transform.position = this.player.transform.position + this.offset; //Teleport to the player, then move based on the offset vector(if all other statements fail)
+		base.transform.position = this.player.transform.position + this.offset + shaking; //Teleport to the player, then move based on the offset vector(if all other statements fail)
 		if (!this.ps.gameOver & !this.ps.jumpRope)
 		{
-			base.transform.position = this.player.transform.position + this.offset; //Teleport to the player, then move based on the offset vector
+			base.transform.position = this.player.transform.position + this.offset + shaking; //Teleport to the player, then move based on the offset vector
 			base.transform.rotation = this.player.transform.rotation * Quaternion.Euler(0f, (float)this.lookBehind, 0f); //Rotate based on player direction + lookbehind
 		}
 		else if (this.ps.gameOver)
 		{
-			base.transform.position = this.baldi.transform.position + this.baldi.transform.forward * 2f + new Vector3(0f, 5f, 0f); //Puts the camera in front of Baldi
+			base.transform.position = this.baldi.transform.position + this.baldi.transform.forward * 2f + new Vector3(0f, 5f, 0f) + shaking; //Puts the camera in front of Baldi
 			base.transform.LookAt(new Vector3(this.baldi.position.x, this.baldi.position.y + 5f, this.baldi.position.z)); //Makes the player look at baldi with an offset so the camera doesn't look at the feet
 		}
 		else if (this.ps.jumpRope)
 		{
-			base.transform.position = this.player.transform.position + this.offset + this.jumpHeightV3; //Apply the jump rope vector onto the normal offset
+			base.transform.position = this.player.transform.position + this.offset + this.jumpHeightV3 + shaking; //Apply the jump rope vector onto the normal offset
 			base.transform.rotation = this.player.transform.rotation; //Rotate based on player direction
 		}
 	}
+
+	public float shakeAmp;
 
 	// Token: 0x040005B0 RID: 1456
 	public GameObject player;

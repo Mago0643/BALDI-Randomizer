@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\Assembly-CSharp\SweepScript.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\StartButton.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\JumpRopeScript.cs" />
+    <Compile Include="Assets\Scripts\Assembly-CSharp\Randomizer\RandomColor.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\MouseoverScript.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\Randomizer\Vineboom.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\ScoreScript.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Assets\Scripts\Assembly-CSharp\EndlessTextScript.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\DoorScript.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\NotebookScript.cs" />
+    <Compile Include="Assets\Scripts\Assembly-CSharp\Randomizer\FireInTheHole.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\MaterialKit\DpCanvasScaler.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\WarningScreenScript.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\MobileController.cs" />
@@ -171,6 +173,7 @@
     <None Include="Assets\Fluid MIDI\Plugins\x86_64\audioplugin-fluidsynth-3.dll" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\Shaders\Transition.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\Shaders\Rainbow.shader" />

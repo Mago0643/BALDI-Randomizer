@@ -475,11 +475,27 @@ public class GameControllerScript : MonoBehaviour
 				base.StartCoroutine(this.BootAnimation());
 				this.ResetItem();
 			}
+            else if (this.item[this.itemSelected] == 11) // Fire in the hole
+            {
+                audioDevice.PlayOneShot(FireInTheHoleClip);
+                GameObject ok = Instantiate(FireInTheHolePrefab, playerTransform.position + (playerTransform.forward * 5f) + new Vector3(0f, 2f, 0f), playerTransform.rotation);
+                ok.GetComponent<FireInTheHole>().baldi = baldiScrpt;
+                ok.GetComponent<FireInTheHole>().gc = this;
+                ok.GetComponent<FireInTheHole>().isOrigin = false;
+                ok.GetComponent<FireInTheHole>().plrCam = playerCamera;
+                ok.GetComponent<Rigidbody>().velocity = playerTransform.forward * 100f;
+				ResetItem();
+			}
 		}
 	}
 
-	// Token: 0x06000977 RID: 2423 RVA: 0x00022B40 File Offset: 0x00020F40
-	private IEnumerator BootAnimation()
+	[Header("FIRE IN THE HOLE!!!!!!!!!!!")]
+	public CameraScript playerCamera;
+	public GameObject FireInTheHolePrefab;
+	public AudioClip FireInTheHoleClip;
+
+    // Token: 0x06000977 RID: 2423 RVA: 0x00022B40 File Offset: 0x00020F40
+    private IEnumerator BootAnimation()
 	{
 		float time = 15f;
 		float height = 375f;
@@ -589,8 +605,9 @@ public class GameControllerScript : MonoBehaviour
 		Camera.main.GetComponent<CameraScript>().offset = new Vector3(0f, -1f, 0f);
 	}
 
-	// Token: 0x040005F7 RID: 1527
-	public CursorControllerScript cursorController;
+    // Token: 0x040005F7 RID: 1527
+    [Space(10)]
+    public CursorControllerScript cursorController;
 
 	// Token: 0x040005F8 RID: 1528
 	public PlayerScript player;
@@ -722,7 +739,8 @@ public class GameControllerScript : MonoBehaviour
 		"Alarm Clock",
 		"WD-NoSquee (Door Type)",
 		"Safety Scissors",
-		"Big Ol' Boots"
+		"Big Ol' Boots",
+		"FIRE IN THE HOLE!!!"
 	};
 
 	// Token: 0x0400061F RID: 1567

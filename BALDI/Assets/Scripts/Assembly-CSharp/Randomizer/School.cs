@@ -16,8 +16,11 @@ public class School : MonoBehaviour
         // randomize all textures
         foreach (MeshRenderer mesh in school)
         {
-            mesh.material.shader = Shader.Find("Legacy Shaders/Transparent/Cutout/Diffuse");
-            mesh.material.mainTexture = rTex.GetRandomTexture();
+            if (!mesh.transform.name.Contains("FireInTheHole"))
+            {
+                mesh.material.shader = Shader.Find("Legacy Shaders/Transparent/Cutout/Diffuse");
+                mesh.material.mainTexture = rTex.GetRandomTexture();
+            }
         }
         foreach (SpriteRenderer sprite in sprites)
         {

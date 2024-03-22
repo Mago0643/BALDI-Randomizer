@@ -62,7 +62,7 @@ public class SwingingDoorScript : MonoBehaviour
 	{
 		if (!(this.gc.notebooks < 2 & other.tag == "Player"))
 		{
-			if (!this.bDoorLocked)
+			if (!this.bDoorLocked & !bDoorOpen)
 			{
 				this.myAudio.PlayOneShot(this.doorOpen, 1f);
                 inside.material.mainTexture = rnd.GetRandomTexture();
@@ -82,9 +82,9 @@ public class SwingingDoorScript : MonoBehaviour
 		this.obstacle.SetActive(true);
 		this.bDoorLocked = true;
 		this.lockTime = time;
-		this.inside.material = this.locked;
-		this.outside.material = this.locked;
-	}
+        inside.material.mainTexture = rnd.GetRandomTexture();
+        outside.material.mainTexture = rnd.GetRandomTexture();
+    }
 
 	// Token: 0x0600094A RID: 2378 RVA: 0x000216C8 File Offset: 0x0001FAC8
 	private void UnlockDoor()
@@ -92,9 +92,9 @@ public class SwingingDoorScript : MonoBehaviour
 		this.barrier.enabled = false;
 		this.obstacle.SetActive(false);
 		this.bDoorLocked = false;
-		this.inside.material = this.closed;
-		this.outside.material = this.closed;
-	}
+        inside.material.mainTexture = rnd.GetRandomTexture();
+        outside.material.mainTexture = rnd.GetRandomTexture();
+    }
 
 	// Token: 0x040005D9 RID: 1497
 	public GameControllerScript gc;
