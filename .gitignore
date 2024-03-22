@@ -4,4 +4,6 @@ BALDI/Temp
 BALDI/obj
 BALDI/.vs
 BALDI/.vsconfig
-BALDI/Builds
+BALDI/Build64
+BALDI/Build32
+BALDI/BuildHTML
