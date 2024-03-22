@@ -145,6 +145,7 @@
     <Compile Include="Assets\Scripts\Assembly-CSharp\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\CursorControllerScript.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\TextUnderliner.cs" />
+    <Compile Include="Assets\Scripts\Assembly-CSharp\Randomizer\Rotato.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\AmbienceScript.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\InputTypeManager.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\UiManager.cs" />
