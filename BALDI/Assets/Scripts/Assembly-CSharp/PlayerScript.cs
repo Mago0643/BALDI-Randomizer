@@ -12,7 +12,7 @@ public class PlayerScript : MonoBehaviour
 		// staminaRate = Random.Range(25f, 35f);
 		walkSpeed = Random.Range(12.5f, 15f);
 		slowSpeed = walkSpeed;
-		runSpeed = Random.Range(16f, 20f);
+		runSpeed = Random.Range(20f, 25f);
 
 		//Yeah your on your own for this one
 		if (PlayerPrefs.GetInt("AnalogMove") == 1)
@@ -152,7 +152,14 @@ public class PlayerScript : MonoBehaviour
 		if (other.transform.name == "Baldi" & !this.gc.debugMode)
 		{
 			this.gameOver = true;
-			RenderSettings.skybox = this.blackSky; //Sets the skybox black
+            // dont lower pitch under 1 cuz MY FUCKING EARS MANN!!!!!!!!!!!!!!!!!!!!!
+            gc.audioDevice.pitch = Random.Range(1f, 2f);
+            gc.audioDevice.volume = 0.75f;
+			if (PlayerPrefs.GetInt("See that heart? No shit!", 0) == 0)
+				gc.audioDevice.PlayOneShot(gc.aud_buzz);
+			else
+                gc.audioDevice.PlayOneShot(gc.aud_laugh);
+            RenderSettings.skybox = this.blackSky; //Sets the skybox black
 			base.StartCoroutine(this.KeepTheHudOff()); //Hides the Hud
 		}
 		else if (other.transform.name == "Playtime" & !this.jumpRope & this.playtime.playCool <= 0f)

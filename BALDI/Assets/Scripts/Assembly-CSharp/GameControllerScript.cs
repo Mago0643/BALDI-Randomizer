@@ -126,8 +126,6 @@ public class GameControllerScript : MonoBehaviour
 			Time.timeScale = 0f;
 			this.gameOverDelay -= Time.unscaledDeltaTime * 0.5f;
 			this.camera.farClipPlane = this.gameOverDelay * 400f; //Set camera farClip 
-			Audio.SetRandomPitch(audioDevice);
-            this.audioDevice.PlayOneShot(this.aud_buzz);
 			if (this.gameOverDelay <= 0f)
 			{
 				if (this.mode == "endless")
@@ -789,7 +787,7 @@ public class GameControllerScript : MonoBehaviour
 	private float gameOverDelay;
 
 	// Token: 0x0400062E RID: 1582
-	private AudioSource audioDevice;
+	public AudioSource audioDevice;
 
 	// Token: 0x0400062F RID: 1583
 	public AudioClip aud_Soda;
@@ -821,6 +819,7 @@ public class GameControllerScript : MonoBehaviour
 	public SongPlayer schoolMusic;
 	public SongPlayer learnMusic;
 	public SongPlayer endMusic;
+	public AudioClip aud_laugh;
 
 	// Token: 0x0400063A RID: 1594
 	//private Player playerInput;

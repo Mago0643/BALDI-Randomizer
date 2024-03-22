@@ -68,7 +68,7 @@ public class FireInTheHole : MonoBehaviour
                 if (baldi.isActiveAndEnabled)
                     baldi.Hear(transform.position, 5f);
 
-            shakeTween = DOTween.To(() => shakeAMP, value => plrCam.shakeAmp = value, 0f, src.clip.length);
+            shakeTween = DOTween.To(() => shakeAMP, value => plrCam.shakeAmp = value, 0f, src.clip.length).SetUpdate(true);
 
             Destroy(GetComponent<Rigidbody>());
             Destroy(GetComponent<CapsuleCollider>());

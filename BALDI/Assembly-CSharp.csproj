@@ -111,6 +111,7 @@
     <Compile Include="Assets\Scripts\Assembly-CSharp\BsodaEffectScript.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\PickupAnimationScript.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\MoveTest.cs" />
+    <Compile Include="Assets\Scripts\Assembly-CSharp\Randomizer\BuzzinSound.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\Randomizer\School.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\CameraScript_Simple.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\GameOverScript.cs" />

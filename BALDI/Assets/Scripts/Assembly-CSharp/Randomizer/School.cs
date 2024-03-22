@@ -16,15 +16,12 @@ public class School : MonoBehaviour
         // randomize all textures
         foreach (MeshRenderer mesh in school)
         {
-            if (!mesh.transform.name.Contains("FireInTheHole"))
-            {
-                mesh.material.shader = Shader.Find("Legacy Shaders/Transparent/Cutout/Diffuse");
-                mesh.material.mainTexture = rTex.GetRandomTexture();
-            }
+            mesh.material.shader = Shader.Find("Legacy Shaders/Transparent/Cutout/Diffuse");
+            mesh.material.mainTexture = rTex.GetRandomTexture();
         }
         foreach (SpriteRenderer sprite in sprites)
         {
-            if (sprite.name != "filename2")
+            if (sprite.name != "filename2" & sprite.name != "FireInTheHole")
             {
                 // converting Texture to Sprite so we shouldn't do the array stuff again
                 var tex = rTex.GetRandomTexture();
